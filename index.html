@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="乙女/代入感短篇阅读站，支持本地姓名替换与手机阅读。"
+    />
+    <title>Otome Reader · 乙女短篇作品库</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="site-header glass-panel">
+        <div>
+          <p class="eyebrow">Otome Short Stories</p>
+          <h1>乙女短篇作品库</h1>
+          <p class="site-intro">
+            选择一篇短篇，填入你的名字，在柔和的阅读页里开启一段只属于你的代入式故事。
+          </p>
+        </div>
+        <button class="soft-button" type="button" data-open-name-modal>修改名字</button>
+      </header>
+
+      <main>
+        <section id="bookshelf-view" class="view" aria-labelledby="bookshelf-title">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Bookshelf</p>
+              <h2 id="bookshelf-title">作品书架</h2>
+            </div>
+            <p id="name-preview" class="name-preview" aria-live="polite"></p>
+          </div>
+
+          <div
+            id="tag-filters"
+            class="tag-filters"
+            aria-label="按标签筛选作品"
+          ></div>
+
+          <div id="story-list" class="story-grid" aria-live="polite"></div>
+        </section>
+
+        <article id="reader-view" class="view reader-view hidden" aria-labelledby="reader-title">
+          <nav class="reader-toolbar glass-panel" aria-label="阅读工具栏">
+            <button class="soft-button" type="button" data-back-to-shelf>返回书架</button>
+            <button class="soft-button" type="button" data-open-name-modal>修改名字</button>
+            <div class="font-controls" aria-label="字体大小调节">
+              <button class="icon-button" type="button" data-font-decrease aria-label="减小字体">A−</button>
+              <button class="icon-button" type="button" data-font-increase aria-label="增大字体">A+</button>
+            </div>
+          </nav>
+
+          <header class="reader-header glass-panel">
+            <p id="reader-tags" class="reader-tags"></p>
+            <h2 id="reader-title"></h2>
+            <p id="reader-meta" class="reader-meta"></p>
+            <p id="reader-summary" class="reader-summary"></p>
+          </header>
+
+          <div id="story-content" class="story-content"></div>
+
+          <footer class="reader-footer">
+            <button class="soft-button" type="button" data-scroll-top>回到顶部</button>
+          </footer>
+        </article>
+
+        <section class="disclaimer glass-panel" aria-labelledby="disclaimer-title">
+          <details>
+            <summary id="disclaimer-title">免责声明与隐私说明</summary>
+            <p>
+              本站为虚构乙女短篇阅读站，所有公开内容仅供阅读娱乐，不包含 18+ 内容。
+              读者输入的大名与昵称只保存在当前浏览器的 localStorage 中，不上传、不联网、不收集。
+              如需删除本地保存的姓名，可随时修改为空或清除浏览器站点数据。
+            </p>
+          </details>
+        </section>
+      </main>
+    </div>
+
+    <dialog id="name-modal" class="name-modal" aria-labelledby="name-modal-title">
+      <form id="name-form" class="name-form" method="dialog">
+        <p class="eyebrow">Reader Profile</p>
+        <h2 id="name-modal-title">设置你的姓名</h2>
+        <p class="modal-copy">
+          大名会用于正文中的正式称呼，昵称会用于亲密称呼。姓名只保存在你的浏览器本地。
+        </p>
+
+        <label for="user-name">大名</label>
+        <input id="user-name" name="userName" type="text" maxlength="24" placeholder="例如：林晚" autocomplete="off" />
+
+        <label for="nick-name">昵称</label>
+        <input id="nick-name" name="nickName" type="text" maxlength="24" placeholder="例如：晚晚" autocomplete="off" />
+
+        <div class="modal-actions">
+          <button class="soft-button secondary" type="button" data-close-name-modal>稍后再说</button>
+          <button class="soft-button primary" type="submit">保存名字</button>
+        </div>
+      </form>
+    </dialog>
+
+    <script src="app.js" defer></script>
+  </body>
+</html>
